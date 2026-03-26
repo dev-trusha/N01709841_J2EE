@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Student</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 30px;
+        }
+
+        .card h2 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #dce1e7;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #2c3e50;
+            transition: border-color 0.2s;
+            outline: none;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.15);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+        }
+
+        .btn-warning { background: #f39c12; color: white; }
+        .btn-warning:hover { background: #d68910; }
+        .btn-secondary { background: #95a5a6; color: white; }
+        .btn-secondary:hover { background: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+<header>Student Management System</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Update Student</h2>
+        <form action="#" th:action="@{/updateStudent}" th:object="${student}" method="post">
+
+            <!-- Hidden field to carry the ID through the form -->
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" th:field="*{name}" placeholder="Enter full name">
+            </div>
+
+            <div class="form-group">
+                <label>Age</label>
+                <input type="number" th:field="*{age}" placeholder="Enter age" min="1" max="120">
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select th:field="*{gender}">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" th:field="*{email}" placeholder="Enter email address">
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" th:field="*{city}" placeholder="Enter city">
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" th:field="*{dateOfBirth}">
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Update Student" class="btn btn-warning">
+                <a th:href="@{/}" class="btn btn-secondary">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
