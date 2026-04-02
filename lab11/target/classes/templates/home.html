@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .home-container {
+            text-align: center;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+<div class="home-container">
+    <h2>Welcome <span th:text="${firstName}"></span> <span th:text="${lastName}"></span>!</h2>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>
